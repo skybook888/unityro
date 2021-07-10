@@ -1,15 +1,15 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="height: 754px; width: 1027px; justify-content: flex-end; visibility: visible; align-items: center;">
-        <ui:GroupBox style="width: 200px; height: auto; background-color: rgb(255, 255, 255); bottom: 10%; justify-content: space-around; padding-right: 8px; flex-direction: column; align-items: stretch; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 8px; padding-top: 8px; padding-bottom: 8px;">
-            <ui:GroupBox name="RowName" style="flex-direction: row; padding-left: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 8px;">
-                <ui:TextField picking-mode="Ignore" value="Username" password="false" readonly="false" style="flex-grow: 1; background-color: rgb(0, 0, 0); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); visibility: visible; color: rgb(0, 0, 0); overflow: visible; display: flex; flex-direction: column; align-items: stretch; justify-content: space-around;" />
+    <ui:VisualElement style="height: 100%; width: 100%; justify-content: flex-end; visibility: visible; align-items: center;">
+        <ui:GroupBox name="LoginPanel" style="width: 30%; height: 15%; background-color: rgb(255, 255, 255); bottom: 10%; justify-content: space-around; padding-right: 8px; flex-direction: column; align-items: stretch; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 8px; padding-top: 8px; padding-bottom: 8px;">
+            <ui:GroupBox name="RowName" style="flex-direction: row; padding-left: 0; padding-top: 0; padding-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 8px; height: 30%;">
+                <ui:TextField picking-mode="Ignore" value="Username" password="false" readonly="false" name="UsernameField" style="flex-grow: 1; background-color: rgb(0, 0, 0); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); visibility: visible; color: rgb(0, 0, 0); overflow: visible; display: flex; flex-direction: column; align-items: stretch; justify-content: space-around;" />
             </ui:GroupBox>
-            <ui:GroupBox name="RowPassword" style="flex-direction: row; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 8px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
-                <ui:TextField picking-mode="Ignore" value="Password" password="true" tooltip="Password" style="flex-grow: 1;" />
+            <ui:GroupBox name="RowPassword" style="flex-direction: row; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 8px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; height: 30%;">
+                <ui:TextField picking-mode="Ignore" value="Password" password="true" tooltip="Password" name="PasswordField" style="flex-grow: 1;" />
             </ui:GroupBox>
-            <ui:GroupBox style="flex-direction: row; justify-content: flex-end; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
-                <ui:Button text="Button" display-tooltip-when-elided="true" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" />
+            <ui:GroupBox style="flex-direction: row; justify-content: flex-end; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; height: 30%;">
+                <ui:Button text="Login" display-tooltip-when-elided="true" name="LoginButton" />
+                <ui:Button text="Exit" display-tooltip-when-elided="true" name="ExitButton" />
             </ui:GroupBox>
         </ui:GroupBox>
     </ui:VisualElement>
