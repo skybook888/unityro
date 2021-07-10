@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(UIDocument))]
 public class LoginController : MonoBehaviour {
 
     public InputField usernameField;
