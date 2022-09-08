@@ -15,7 +15,7 @@ namespace ROIO.GRF
         public static int GRF_HEADER_FULL_LEN = GRF_HEADER_LEN + 0x1F;
         public static uint GRF_TYPE_GRF = 0x01; /** Value to distinguish a GRF file in Grf::type */
 
-        string filename;
+        public string filename;
         protected uint len;
         protected uint type;
         protected uint version;
@@ -202,14 +202,12 @@ namespace ROIO.GRF
             stream.Close();
 
             /* Read information about each file */
-            for (i = offset = 0; i < grf.nfiles; i++)
-            {
+            for (i = offset = 0; i < grf.nfiles; i++) {
                 /* Grab the filename length */
                 len = GrfSupport.getCStringLength(buf, offset) + 1;
 
                 /* Make sure its not too large */
-                if (len >= GrfTypes.GRF_NAMELEN)
-                {
+                if (len >= GrfTypes.GRF_NAMELEN) {
                     throw new Exception("GE_CORRUPTED");
                 }
 
@@ -220,17 +218,16 @@ namespace ROIO.GRF
                 offset += len;
 
                 /* Grab the rest of the information */
-                file.compressed_len = GrfSupport.LittleEndian32(buf, (int)offset);
-                file.compressed_len_aligned = GrfSupport.LittleEndian32(buf, (int)offset + 4);
-                file.real_len = GrfSupport.LittleEndian32(buf, (int)offset + 8);
+                file.compressed_len = GrfSupport.LittleEndian32(buf, (int) offset);
+                file.compressed_len_aligned = GrfSupport.LittleEndian32(buf, (int) offset + 4);
+                file.real_len = GrfSupport.LittleEndian32(buf, (int) offset + 8);
                 file.flags = buf[offset + 0xC];
-                file.pos = GrfSupport.LittleEndian32(buf, (int)(offset + 0xD)) + (uint)GRF_HEADER_FULL_LEN;
+                file.pos = GrfSupport.LittleEndian32(buf, (int) (offset + 0xD)) + (uint) GRF_HEADER_FULL_LEN;
                 file.hash = GrfSupport.GRF_NameHash(file.name);
 
                 file.name = NormalizePath(file.name);
-
-                grf.files.Add(file.name, file);
-
+                grf.files[file.name]= file;
+                
                 /* Advance to the next file */
                 offset += 0x11;
 

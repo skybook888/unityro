@@ -46,7 +46,7 @@ public class LuaInterface {
     }
 
     private void LoadAccessoryInfo() {
-        Environment.DoString(FileManager.ReadSync("data/lua files/datainfo/accessoryid.lub", Encoding.GetEncoding(1252)).ReadToEnd());
-        Environment.DoString(FileManager.ReadSync("data/lua files/datainfo/accname.lub", Encoding.GetEncoding(1252)).ReadToEnd());
+        Environment.DoString(FileManager.ReadSync("data/luafiles514/lua files/datainfo/accessoryid.lub", Encoding.GetEncoding(1252)).ReadToEnd());
+        Environment.DoString(FileManager.ReadSync("data/luafiles514/lua files/datainfo/accname.lub", Encoding.GetEncoding(1252)).ReadToEnd());
     }
 }

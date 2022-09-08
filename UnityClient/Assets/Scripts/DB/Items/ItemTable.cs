@@ -334,7 +334,7 @@ public class ItemTable {
     public static void LoadItemDb(Configuration configs) {
         Script script = new Script();
         script.Options.ScriptLoader = new CustomScriptLoader();
-        script.DoFile(configs.SystemPath + "itemInfo.lua");
+        script.DoFile(configs.SystemPath + "itemInfo.lub");
         Table table = (Table)script.Globals["tbl"];
 
         foreach (var key in table.Keys) {
@@ -361,8 +361,10 @@ public class ItemTable {
                     identifiedDescriptionName = string.Join("\n", identifiedDescriptionName),
                     slotCount = int.Parse(it["slotCount"].ToString()),
                     ClassNum = int.Parse(it["ClassNum"].ToString()),
-                    costume = bool.Parse(it["costume"].ToString())
                 };
+                if (it["Costume"] != null) {
+                    item.costume = bool.Parse(it["ClassNum"].ToString());
+                }
 
                 Items.Add(item.id, item);
             } catch (Exception e) {

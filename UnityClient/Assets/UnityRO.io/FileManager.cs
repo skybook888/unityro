@@ -32,12 +32,14 @@ namespace ROIO {
 
         private static bool batching = false;
         private static List<string> batch = new List<string>();
+        private static string _rootPath; 
 
         public class RawImage {
             public byte[] data;
         }
 
         public static void LoadGRF(string rootPath, List<string> grfs) {
+            _rootPath = rootPath;
             GrfList = new List<Grf>();
             foreach (var path in grfs) {
                 var grf = Grf.grf_callback_open(rootPath + path, "r", null);
@@ -208,7 +210,7 @@ namespace ROIO {
         /// <param name="path">file path</param>
         /// <returns>file or null</returns>
         public static MemoryStreamReader ReadSync(string path) {
-
+            
             if (Application.isMobilePlatform || Application.platform == RuntimePlatform.WebGLPlayer) {
                 var filePath = Path.Combine(Application.streamingAssetsPath, path);
                 WWW reader = new WWW(filePath);
@@ -220,8 +222,13 @@ namespace ROIO {
                     return null;
                 }
             }
+            if (File.Exists(_rootPath + "/" + path)) {
+                byte[] buffer = File.ReadAllBytes(_rootPath + "/" + path);
+                return new MemoryStreamReader(buffer);
+            }
 
             foreach (var grf in GrfList) {
+                
                 GrfFile file = grf.GetDescriptor(path);
                 if (file != null) {
                     byte[] data = grf.GetData(file);
